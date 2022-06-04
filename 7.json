@@ -1,0 +1,30 @@
+{
+	"Parameters":{
+		"ami":{
+			"Type":"String"
+		}
+	},
+	"Resources":{
+		"i1":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"ImageId":{"Ref":"ami"},
+				"InstanceType":"t2.micro",
+				"SubnetId":"subnet-0e13901261f188221"
+			}
+		},
+		"v1":{
+		    "DependsOn":["i1"],
+			"Type":"AWS::EC2::Volume",
+			"Properties":{
+				"AvailabilityZone":"ap-southeast-1a",
+				"Size":"5",
+				"VolumeType":"gp2"
+			}
+		},
+		"eip":{
+		    "DependsOn":["i1","v1"],
+			"Type":"AWS::EC2::EIP"
+		}
+	}
+}

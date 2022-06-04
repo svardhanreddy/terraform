@@ -1,0 +1,23 @@
+{
+	"Parameters":{
+		"env":{
+			"Type":"String",
+			"AllowedValues" : ["true","false"]
+		}
+	},
+	"Resources":{
+		"i1":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"InstanceType":"t2.micro",
+				"ImageId":"ami-0750a20e9959e44ff",
+				"NetworkInterfaces":[{
+					"AssociatePublicIpAddress":{"Ref":"env"},
+					"DeviceIndex": "0"
+				}
+				]
+			}
+		}
+	}
+}
+   

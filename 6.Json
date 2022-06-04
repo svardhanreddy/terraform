@@ -1,0 +1,54 @@
+{
+	"Parameters":{
+		"AMIId":{
+			"Type": "String",
+			"Description":"Enter Valid AMI"
+		},
+		"InsType":{
+			"Type":"String",
+			"Description":"Select Instance Type",
+			"AllowedValues" : ["t2.micro", "t2.small", "t2.large"]
+		},
+		"VolumeSize":{
+			"Type":"Number",
+			"Description":"Enter Volume Size"
+		},
+		"Subnetid":{
+			"Type":"String",
+			"AllowedValues" : ["subnet-0e13901261f188221", "subnet-092e0dbcec88381be"]
+			
+		}
+	},
+	"Resources":{
+		"I1":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"ImageId":{"Ref":"AMIId"},
+				"InstanceType":{"Ref":"InsType"},
+				"SubnetId":{"Ref":"Subnetid"}
+			}
+		},
+		"V1":{
+			"Type":"AWS::EC2::Volume",
+			"Properties":{
+				"AvailabilityZone":{"Fn::GetAtt":["I1","AvailabilityZone"]},
+				"Size":{"Ref":"VolumeSize"},
+				"VolumeType":"gp2"
+			}
+		},
+		"v1i1":{
+			"Type":"AWS::EC2::VolumeAttachment",
+			"Properties":{
+				"InstanceId":{"Ref":"I1"},
+				"VolumeId":{"Ref":"V1"},
+				"Device":"/dev/sdf"
+			}
+		},
+		"eip":{
+			"Type":"AWS::EC2::EIP",
+			"Properties":{
+				"InstanceId":{"Ref":"I1"}
+			}
+		}
+	}
+}

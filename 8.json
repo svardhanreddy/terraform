@@ -1,0 +1,23 @@
+{
+	"Parameters":{
+		"env":{
+			"Type":"String",
+			"Default":"dev",
+			"AllowedValues" : ["dev","test","prod"]
+		}
+	},
+	"Conditions":{
+		"c1":{
+			"Fn::Equals":[{"Ref":"env"},"dev"]
+		}
+	},
+	"Resources":{
+		"i1":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"ImageId":"ami-0750a20e9959e44ff",
+				"InstanceType":{"Fn::If":["c1","t2.micro","t2.small"]}
+			}
+		}
+	}
+}

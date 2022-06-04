@@ -1,0 +1,26 @@
+{
+	"Parameters":{
+		"vsz":{
+		   "Type":"Number",
+		   "Description":"Enter Volume Size"
+		}
+	},
+	"Resources":{
+		"v1":{
+			"Type":"AWS::EC2::Volume",
+			"Properties":{
+				"AvailabilityZone":"ap-southeast-1a",
+				"Size":{"Ref":"vsz"},
+				"VolumeType":"gp2"
+			}
+		}
+	},
+	"Outputs":{
+		"vszval":{
+			"Value": {"Ref":"vsz"}
+		},
+		"volid":{
+			"Value":{"Ref":"v1"}
+		}
+	}
+}

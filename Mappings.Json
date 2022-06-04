@@ -1,0 +1,30 @@
+{
+	
+	"Mappings":{
+		"images":{
+			"ap-south-1":{"ami":"ami-05102cba58d91b74a"},
+			"ap-southeast-1":{"ami":"ami-0bd6906508e74f692"},
+			"eu-west-2":{"ami":"ami-0a244485e2e4ffd03"}
+		},
+		"its":{
+		   	"ap-south-1":{"InstanceType":"t2.micro"},
+			"ap-southeast-1":{"InstanceType":"t2.small"},
+			"eu-west-2":{"InstanceType":"t2.large"}
+		},
+		"KeyPairs":{
+			"ap-south-1":{"key":"prodmum"},
+			"ap-southeast-1":{"key":"prodsing"},
+			"eu-west-2":{"key":"devlon"}
+		}
+	},
+	"Resources":{
+		"i1":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"ImageId":{"Fn::FindInMap":["images",{"Ref":"AWS::Region"},"ami"]},
+				"InstanceType":{"Fn::FindInMap":["its",{"Ref":"AWS::Region"},"InstanceType"]},
+				"KeyName":{"Fn::FindInMap":["KeyPairs",{"Ref":"AWS::Region"},"key"]}
+			}
+		}
+	}
+}
