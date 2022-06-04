@@ -7,20 +7,14 @@
 			"Tags":[
 			   {
 			      "Key": "Name",
+
 				  "Value": "Sindhu-Vpc"
-			   },
-			   {
-			      "Key": "Env",
-				  "Value": "Dev"
-			   }
-			   
-			]
+=======
+				  "Value": "App1-Vpc1"
 		}
 	   }
 	}
 	
 }
 
-
-kjrhgerkjhg 
-;legtjtreh
+kjrhgerkjh
