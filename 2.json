@@ -4,8 +4,8 @@
 	     "vol1":{
 			"Type":"AWS::EC2::Volume",
 			"Properties":{
-				"AvailabilityZone":"ap-southeast-1a",
-				"Size":"10",
+				"AvailabilityZone":"ap-southeast-1b",
+				"Size":"20",
 				"VolumeType":"gp2",
 				"Tags":[
 				   {
