@@ -1,6 +1,6 @@
 {
-	"Parameters":{
-		"env":{
+	"Para":{
+		"environment":{
 			"Type":"String",
 			"AllowedValues" : ["true","false"]
 		}
