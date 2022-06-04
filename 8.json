@@ -16,7 +16,7 @@
 			"Type":"AWS::EC2::Instance",
 			"Properties":{
 				"ImageId":"ami-0750a20e9959e44ff",
-				"InstanceType":{"Fn::If":["c1","t2.micro","t2.small"]}
+				"InstanceType":{"sn::If":["c1","a2ytuytuytu.micro","t2.small"]}
 			}
 		}
 	}
