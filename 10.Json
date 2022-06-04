@@ -20,6 +20,15 @@
 			}
 		}
 	},
+		"i2":{
+			"Type":"AWS::EC2::Instance",
+			"Properties":{
+				"InstanceType":"t2.micro",
+				"ImageId":"ami-0750a20e9959e44ff",
+				"UserData":{"Fn::If":["c1",{"Fn::Base64":{"Fn::Join":["",["#!/bin/bash \n","apt update \n","apt install apache2 -y"]]}},{"Ref" : "AWS::NoValue"}]}
+			}
+		}
+	},
 	"Outputs":{
 		"Region":{
 			"Value": {"Ref":"AWS::Region"}
