@@ -6,7 +6,7 @@
 		}
 	},
 	"Resources":{
-		"i1":{
+		"I1":{
 			"Type":"AWS::EC2::Instance",
 			"Properties":{
 				"InstanceType":"t2.micro",
